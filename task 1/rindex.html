@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+    <div class="container">
+        <h1>Internship Task-1</h1>
+        <div id="language-selector">
+          <label for="language">Select Language:</label>
+          <select class="language">
+            <option value="en">English</option>
+            <option value="sp">Spanish</option>
+            <option value="hi">Hindi</option>
+            <option value="po">Portuguese</option>
+            <option value="ch">Chinese</option>
+            <option value="fr">French</option>
+          </select>
+        </div>
+  
+        <div class="authMethod"></div>
+      </div>
+  
+      <script>
+        const choosedLang = document.querySelector(".language");
+        const authType = document.querySelector(".authMethod");
+  
+        function backgroundColor(language) {
+          switch (language) {
+            case "hi":
+              return "blueBody";
+            case "ch":
+              return "greenBody";
+            case "fr":
+              return "yellowBody";
+            default:
+              return "whiteBody";
+          }
+        }
+  
+        function typeOFAuth(language) {
+          switch (language) {
+            case "fr":
+              return '<label for="email">Email:</label><input type="email" id="email" required><button onclick="sendOTPFunc()">Send OTP</button>';
+            case "hi":
+            case "po":
+            case "ch":
+            case "sp":
+            case "en":
+              return '<label for="mobile">Mobile Number:</label><input type="tel" id="mobile" required><button onclick="sendOTPFunc()">Send OTP</button>';
+            default:
+              return "";
+          }
+        }
+  
+        choosedLang.addEventListener("change", function () {
+          const selectedLang = this.value;
+          document.body.className = backgroundColor(selectedLang);
+          authType.innerHTML = typeOFAuth(selectedLang);
+        });
+  
+        function sendOTPFunc() {
+          alert("OTP SENT!");
+        }
+      </script>
+</body>
+</html>
